@@ -1,4 +1,4 @@
-eruditus
+Eruditus
 ========
 
 A new movement in making!
