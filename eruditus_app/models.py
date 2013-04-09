@@ -26,12 +26,18 @@ class Term(models.Model):
                         )
     term_type = models.CharField(max_length=3, choices=TERM_TYPE_CHOICES)
     term_value = models.CharField(max_length=30)
+    
+    def __unicode__(self):
+        return self.term_value
 
 
 class License(models.Model):
     short_name = models.CharField(max_length=2, primary_key=True)
     name = models.CharField(max_length=50)
     url = models.URLField
+    
+    def __unicode__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -59,23 +65,35 @@ class Image(Post):
     license = models.ForeignKey(License)
     source_name = models.CharField(max_length=30)
     source_url = models.URLField
+    
+    def __unicode__(self):
+        return self.title
 
     
 class Link(Post):
     link = models.URLField
     link_text = models.CharField(max_length=500)
     description = models.TextField
+    
+    def __unicode__(self):
+        return self.link
 
 
 class Aside(Post):
     title = models.CharField(max_length=500)
     content = models.TextField
+    
+    def __unicode__(self):
+        return self.title
 
     
 class Quote(Post):
     quote = models.CharField(max_length=1000)
     by = models.CharField(max_length=30)
     by_url = models.URLField
+    
+    def __unicode__(self):
+        return self.quote
  
      
 class Comment(models.Model):
@@ -84,3 +102,6 @@ class Comment(models.Model):
     author_email = models.EmailField
     author_url = models.URLField
     text = models.TextField
+    
+    def __unicode(self):
+        return self.text
